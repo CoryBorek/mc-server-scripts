@@ -56,6 +56,7 @@ elif [ $STEP -eq 2 ]; then
         next_step
     else
         echo "Usage in this step: $0 [service|none]"
+        exit 1
     fi
 fi
 echo "Done! You may remove this script upon exit."
