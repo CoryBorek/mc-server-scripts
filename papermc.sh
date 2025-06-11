@@ -30,7 +30,13 @@ if [ "$LATEST_BUILD" != "null" ]; then
   PAPERMC_URL="https://api.papermc.io/v2/projects/${PROJECT}/versions/${VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
 
   # Download the latest Paper version
-  wget $PAPERMC_URL
+  wget $PAPERMC_URL 2> wget_error.txt
+  if grep -q "404 Not Found" wget_error.txt; then
+       echo "No build for $PROJECT-$VERSION found!"
+       rm wget_error.txt
+       exit 1
+  fi
+  rm -f wget-error.txt
   echo "Download completed"
 else
   echo "No stable build for version $VERSION found :("
