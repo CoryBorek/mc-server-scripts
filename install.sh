@@ -24,13 +24,25 @@ elif [ $STEP -eq 1 ]; then
         if [ "$1" == "paper" ]; then
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/paper.sh
             chmod +x ./paper.sh
+            unset -e
             ./paper.sh $2
+            if [ ! $? -eq 0 ]; then
+                rm -f ./paper.sh ./papermc.sh
+                exit 1
+            fi
+            set -e
             rm ./paper.sh
         elif [ "$1" == "velocity" ]; then
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/velocity.sh
-           chmod +x ./velocity.sh
-           ./velocity.sh $2
-           rm ./velocity.sh
+            chmod +x ./velocity.sh
+            unset -e
+            ./velocity.sh $2
+            if [ ! $? -eq 0 ]; then
+                rm -f ./velocity.sh ./papermc.sh
+                exit 1
+            fi
+            set -e
+            rm ./velocity.sh
        fi
        next_step
     else
@@ -38,7 +50,11 @@ elif [ $STEP -eq 1 ]; then
         exit 1
     fi
 elif [ $STEP -eq 2 ]; then
+    echo "Step 2 - Script install"
     if [[ -n $1 ]]; then
+        if [ "$1" == "none" ]; then
+            next_step
+        fi
         if [ "$1" == "service" ]; then
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/gen-service.sh
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/del-service.sh
@@ -55,7 +71,7 @@ elif [ $STEP -eq 2 ]; then
         chmod +x ./restart.sh
         next_step
     else
-        echo "Usage in this step: $0 [service|none]"
+        echo "Usage in this step: $0 [service|none|scripts]"
         exit 1
     fi
 fi

@@ -24,7 +24,7 @@ sudo apt install -y curl jq
 LATEST_BUILD=$(curl -s https://api.papermc.io/v2/projects/${PROJECT}/versions/${VERSION}/builds | \
   jq -r '.builds | map(select(.channel == "default") | .build) | .[-1]')
 
-sudo apt remove curl jq
+sudo apt remove -y curl jq
 if [ "$LATEST_BUILD" != "null" ]; then
   JAR_NAME=${PROJECT}-${VERSION}-${LATEST_BUILD}.jar
   PAPERMC_URL="https://api.papermc.io/v2/projects/${PROJECT}/versions/${VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
