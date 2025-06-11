@@ -25,8 +25,8 @@ LATEST_BUILD=$(curl -s https://api.papermc.io/v2/projects/${PROJECT}/versions/${
   jq -r '.builds | map(select(.channel == "default") | .build) | .[-1]')
 
 if [ "$LATEST_BUILD" != "null" ]; then
-  JAR_NAME=${PROJECT}-${MINECRAFT_VERSION}-${LATEST_BUILD}.jar
-  PAPERMC_URL="https://api.papermc.io/v2/projects/${PROJECT}/versions/${MINECRAFT_VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
+  JAR_NAME=${PROJECT}-${VERSION}-${LATEST_BUILD}.jar
+  PAPERMC_URL="https://api.papermc.io/v2/projects/${PROJECT}/versions/${VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
 
   # Download the latest Paper version
   wget $PAPERMC_URL
