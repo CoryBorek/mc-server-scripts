@@ -36,7 +36,7 @@ if [ "$LATEST_BUILD" != "null" ]; then
        rm wget_error.txt
        exit 1
   fi
-  rm -f wget-error.txt
+  rm -f wget_error.txt
   echo "Download completed"
 else
   echo "No stable build for version $VERSION found :("
