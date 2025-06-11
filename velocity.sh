@@ -1,6 +1,6 @@
 #!/bin/bash
 VELOCITY_VERSION="3.4.0-SNAPSHOT"
-if [[ -n $1 ]]; then
+if [[ -n "$1" ]]; then
 VELOCITY_VERSION=$1
 fi
 

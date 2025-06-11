@@ -1,6 +1,6 @@
 #!/bin/bash
 PAPER_VERSION="1.21.4"
-if [[ -n $1 ]]; then
+if [[ -n "$1" ]]; then
 PAPER_VERSION=$1
 fi
 

@@ -6,12 +6,12 @@ echo "Usage: $0 [project] [version]"
 exit 1
 }
 
-if [[ ! -n $1 ]]; then
+if [[ ! -n "$1" ]]; then
 echo "No Project Given.";
 usage
 fi
 
-if [[ ! -n $2 ]]; then
+if [[ ! -n "$2" ]]; then
 echo "no version given"
 usage
 fi
