@@ -24,17 +24,17 @@ elif [ $STEP -eq 1 ]; then
         if [ "$1" == "paper" ]; then
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/paper.sh
             chmod +x ./paper.sh
-            ./paper.sh
+            ./paper.sh $2
             rm ./paper.sh
         elif [ "$1" == "velocity" ]; then
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/velocity.sh
            chmod +x ./velocity.sh
-           ./velocity.sh
+           ./velocity.sh $2
            rm ./velocity.sh
        fi
        next_step
     else
-        echo "Usage in this step: $0 [paper|velocity|scripts]"
+        echo "Usage in this step: $0 <paper|velocity|scripts> [version]"
         exit 1
     fi
 elif [ $STEP -eq 2 ]; then
