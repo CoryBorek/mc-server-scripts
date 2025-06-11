@@ -24,7 +24,7 @@ elif [ $STEP -eq 1 ]; then
         if [ "$1" == "paper" ]; then
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/paper.sh
             chmod +x ./paper.sh
-            unset -e
+            set +e
             ./paper.sh $2
             if [ ! $? -eq 0 ]; then
                 rm -f ./paper.sh ./papermc.sh
@@ -35,7 +35,7 @@ elif [ $STEP -eq 1 ]; then
         elif [ "$1" == "velocity" ]; then
             wget https://raw.githubusercontent.com/CoryBorek/mc-server-scripts/refs/heads/main/velocity.sh
             chmod +x ./velocity.sh
-            unset -e
+            set +e
             ./velocity.sh $2
             if [ ! $? -eq 0 ]; then
                 rm -f ./velocity.sh ./papermc.sh
