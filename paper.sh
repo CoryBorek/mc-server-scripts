@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 PAPER_VERSION="1.21.4"
 if [[ -n "$1" ]]; then
 PAPER_VERSION=$1
